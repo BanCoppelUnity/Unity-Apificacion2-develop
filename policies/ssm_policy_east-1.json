@@ -1,0 +1,46 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "ssmmessages:CreateControlChannel",
+                "ssmmessages:CreateDataChannel",
+                "ssmmessages:OpenControlChannel",
+                "ssmmessages:OpenDataChannel",
+                "ssm:UpdateInstanceInformation"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": "arn:aws:s3:::aws-accelerator-central-logs-327745943347-us-east-1/session/621087433679/us-east-1/*",
+            "Effect": "Allow",
+            "Sid": "S3CentralLogs"
+        },
+        {
+            "Action": "s3:GetEncryptionConfiguration",
+            "Resource": "arn:aws:s3:::aws-accelerator-central-logs-327745943347-us-east-1",
+            "Effect": "Allow",
+            "Sid": "S3CentralLogsEncryptionConfig"
+        },
+        {
+            "Action": [
+                "kms:Decrypt",
+                "kms:GenerateDataKey"
+            ],
+            "Resource": "arn:aws:kms:us-east-1:327745943347:key/47478d00-c647-4484-a206-ab08d5d433af",
+            "Effect": "Allow",
+            "Sid": "S3CentralLogsEncryption"
+        },
+        {
+            "Action": "kms:Decrypt",
+            "Resource": "arn:aws:kms:us-east-1:621087433679:key/2e06878c-89c1-4f76-b9a1-c02ab2e81ea7",
+            "Effect": "Allow",
+            "Sid": "sessionKey"
+        }
+    ]
+}

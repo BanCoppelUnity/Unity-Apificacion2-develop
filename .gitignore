@@ -1,0 +1,23 @@
+# pytgon files
+__pycache__/
+.pytest_cache/
+
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.backup
+terraform.tfvars
+override.tf
+override.tf.json
+*.tfplan
+.terraformrc
+terraform.rc
+.terraform.lock.hcl
+
+# Ignora los archivos .tfvars que estan destinados a ser privados
+# Descomenta la siguiente linea para excluir  archivos .auto.tfvars or .auto.tfvars.json 
+# .auto.tfvars
+
+# Ignora los archivos de configuración del CLI 
+# Esto incluye la cache del CLI , localizada en  ~/.terraform.d/cache
+.terraform.d/ 
